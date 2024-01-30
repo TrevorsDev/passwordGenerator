@@ -1,27 +1,43 @@
-// Assignment code here. This is going to be the code
-//used to generate our password when we click the button
+/* Assignment code here. This is going to be the code
+/used to generate our password when we click the button*/
 
-
-//var specArr = specialCharacters.split('');
-
-function generatePassword() {
+const generatePassword = () => {
 
   var specialCharacters = '!@#$%^&*'.split('');
   var numbers = '123456789'.split('');
   var lowerCase = 'abcdefghijklmnopqrstuvwxyz'.split('');
   var upperCase = 'ABCDEFGHIJKLMOPQRSTUVWXYZ'.split('');
 
-  //create prompt when button is clicked -> ask 3 criteria choices for password
-  let needsCapital = prompt("Do you want uppercase letters?", " Type yes or no");
-  let needsSpecial = confirm("Do you want special characters");
-  let needsNumbers = confirm("Do you want numbers");
-
-  const morphToUpper
-  if (needsCapital === "yes")
+  let confirmChoices = []
 
   
+  const needsCapital = confirm("Do you want uppercase letters?");
+  const needsLower = confirm("Do you want lower case letters?")
+  const needsSpecial = confirm("Do you want special characters?");
+  const needsNumbers = confirm("Do you want numbers?");
+  const psswrdLength = prompt("How long do you want your password to be?")
 
-return
+  if (needsCapital) {
+    confirmChoices = confirmChoices.concat(upperCase);
+  }
+  if (needsLower) {
+    confirmChoices = confirmChoices.concat(lowerCase);
+  }
+  if (needsSpecial) {
+    confirmChoices = confirmChoices.concat(specialCharacters);
+  }
+  if (needsNumbers) {
+    confirmChoices = confirmChoices.concat(numbers);
+  }
+  console.log(confirmChoices)
+
+  let password = "";
+
+  for (i = 0; i < psswrdLength; i++) {
+    let randomCharacter = confirmChoices[Math.floor(Math.random() * confirmChoices.length)];
+    password += randomCharacter;
+  }
+  return password;
 }
 
 // Get references to the #generate element
